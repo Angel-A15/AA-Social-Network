@@ -4,19 +4,20 @@ const ThoughtSchema = new Schema(
     {
         thoughtText: {
             type: String,
-            Required: true,
+            required: true,
             minLength: 1,
             maxLength: 280
         },
         createdAt: {
-            Type: Date,
+            type: Date,
             default: Date.now,
-            //Use a getter method to format the timestamp on query
+            get: createdAtVal => dateFormat(createdAtVal)
+            //Use a getter method to format the timestamp on query:done
         },
         // (The user that created this thought)
         username: {
-            Type: String,
-            Required: true
+            type: String,
+            required: true
         },
         // (These are like replies)
         reactions: {
