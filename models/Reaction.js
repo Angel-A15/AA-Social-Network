@@ -1,24 +1,31 @@
+const { SchemaTypes } = require("mongoose");
+
 const ReactionSchema = new Schema(
     {
         reactionId:{
-
+            //TO DO: Use Mongoose's ObjectId data type
+            type: SchemaTypes.ObjectId,
+            //TO DO: Default value is set to a new ObjectId
+            default: newObjectId
         },
         reactionBody: {
-            Type: String,
-            Required: true,
+            type: String,
+            required: true,
             maxLength: 280
         },
         username: {
-            Type: String,
-            Required: True
+            type: String,
+            required: True
         },
         createdAt: {
-            Type: Date,
+            type: Date,
             default: Date.now,
-            // Use a getter method to format the timestamp on query
+            get: createdAtVal => dateFormat(createdAtVal)
+            // Use a getter method to format the timestamp on query:done
         }
     }
 );
 
+// Schema Settings
 // This will not be a model, but rather will be used as the 
 // reaction field's subdocument schema in the Thought model.

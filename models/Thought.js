@@ -21,7 +21,8 @@ const ThoughtSchema = new Schema(
         },
         // (These are like replies)
         reactions: {
-            // Array of nested documents created with the reactionSchema
+            
+            // Array of nested documents created with the reactionSchema:uncertain
         }
     }
 );
