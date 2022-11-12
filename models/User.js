@@ -14,17 +14,34 @@ const UserSchema = new Schema(
         required: true,
         unique: true,
         match: [
+            //needs match of valid email address property:done
             /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/,
             "Please fill a valid email address",
         ],
-        //needs match of valid email address property:done
+        
     },
-    //Array of _id values referencing the Thought model
-    thoughts: 
-        [ThoughtSchema],
-    //Array of _id values referencing the User model
-    freinds: 
-        [UserSchema]
+    thoughts: [
+        {
+            //Array of _id values referencing the Thought model:done
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }
+    ]
+    ,
+    freinds: [
+        {
+            //Array of _id values referencing the User model:done?
+            type: Schema.Types.ObjectId,
+            reg: 'User'
+        }
+    ]
+   },
+   {
+    toJSON: {
+        virtuals: true,
+        getters: true
+    },
+    id: false
    }
 );
 

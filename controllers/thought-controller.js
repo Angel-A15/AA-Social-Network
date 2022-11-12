@@ -69,9 +69,15 @@ const thoughtController = {
 
 // getThoughtById,
 // getAllThoughts,
-// createThought,
-// updateThought,
-// removeThought
-// addReaction,
-// removeReaction
+// createThought:done
+// updateThought:done
+// removeThought:done
+// addReaction:done
+// removeReaction:done
+
+// /api/thoughts/:thoughtId/reactions
+// POST to create a reaction stored in a single thought's reactions array field
+// DELETE to pull and remove a reaction by the reaction's reactionId value
+
+
 module.exports = thoughtController;

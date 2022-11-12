@@ -12,18 +12,18 @@ const {
 } = require('../../controllers/thought-controller');
 
 
-// GET all users
-router.route('/:userId').get(getAllThoughts);
+// GET all thoughts
+router.route('/:thoughtId').get(getAllThoughts);
 
-// GET a single user by its _id and populated thought and friend data
-router.route('/:userId').get(getThoughtById)
+// GET a single thought by its _id and populated thought and friend data
+router.route('/:thoughtId').get(getThoughtById)
 
-// POST a new user:
-router.route('/:userId').post(createThought);
+// POST a new thought:
+router.route('/:thoughtId').post(createThought);
 
 
-//Set up Get, PUT, and DELETE by id User
-router.route('/:userid')
+//Set up Get, PUT, and DELETE by id thought
+router.route('/:thoughtId')
     .get(getThoughtById)
     .put(updateThought)
     .delete(removeThought);
