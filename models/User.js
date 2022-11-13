@@ -25,16 +25,15 @@ const UserSchema = new Schema(
             //Array of _id values referencing the Thought model:done
             type: Schema.Types.ObjectId,
             ref: 'Thought'
-        }
-    ]
-    ,
+        },
+    ],
     freinds: [
         {
             //Array of _id values referencing the User model:done?
             type: Schema.Types.ObjectId,
             reg: 'User'
-        }
-    ]
+        },
+    ],
    },
    {
     toJSON: {

@@ -4,39 +4,30 @@ const {
     getAllUsers,
     getUserById,
     createUser,
-    //issue
     updateUser,
     deleteUser,
     addFriend,
     removeFriend,
-    getThoughts
 } = require('../../controllers/user-controller');
 
 
 // GET all users
-router
-    .route('/')
+router.route('/')
     .get(getAllUsers)
     .post(createUser);
 
-// GET a single user by its _id and populated thought and friend data:done?
-//Set up Get, PUT, and DELETE by id User:done
-router
-    .route('/:userId')
+// POST a new user
+router.route('/:userId')
+    .post(createUser);
+
+//Set up Get, PUT, and DELETE by id User
+router.route('/:userId')
     .get(getUserById)
     .put(updateUser)
     .delete(deleteUser);
 
-
-// POST a new user:done:
-router
-    //issue
-    .route('/:userId')
-    .post(createUser);
-    
-// POST to add a new friend to a user's friend list:done
-// DELETE to remove a friend from a user's friend list:done
-router.route('/:userid/friends/:friendId')
+// DELETE to remove a friend from a user's friend list
+router.route('/:userId/friends/:friendId')
     .post(addFriend)
     .delete(removeFriend);
 
