@@ -33,7 +33,9 @@ const userController = {
             .then(dbUserData => res.json(dbUserData))
             .catch(err => res.json(err));
     },
-    updateUser({ params, body }, res) {
+    // /api/users/:userId/friends/:friendId
+    // POST to add a new friend to a user's friend list:done?
+    updateFriend({ params, body }, res) {
         User.findOneAndUpdate({ _id: params.userId}, body, {
             new: true,
             runValidators: true
@@ -47,14 +49,14 @@ const userController = {
             })
             .catch(err => res.json(err));
     },
-    deletePizza({ params }, res) {
+    // /api/users/:userId/friends/:friendId
+    // DELETE to remove a friend from a user's friend list:done?
+    removeFriend({ params }, res) {
         User.findOneAndDelete({ _id: params.userId})
             .then(dbUserData => res.json(dbUserData))
             .catch(err => res.json(err));
     }
 };
-// /api/users/:userId/friends/:friendId
-// POST to add a new friend to a user's friend list
-// DELETE to remove a friend from a user's friend list
+
 
 module.exports = userController;

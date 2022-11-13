@@ -4,6 +4,7 @@ const {
     getAllUsers,
     getUserById,
     createUser,
+    //issue
     updateUser,
     deleteUser,
     addFriend,
@@ -26,13 +27,15 @@ router
     .put(updateUser)
     .delete(deleteUser);
 
-// POST a new user:
+
+// POST a new user:done:
 router
+    //issue
     .route('/:userId')
     .post(createUser);
     
-// POST to add a new friend to a user's friend list:done?
-// DELETE to remove a friend from a user's friend list:done?
+// POST to add a new friend to a user's friend list:done
+// DELETE to remove a friend from a user's friend list:done
 router.route('/:userid/friends/:friendId')
     .post(addFriend)
     .delete(removeFriend);

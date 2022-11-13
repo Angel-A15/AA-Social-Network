@@ -1,5 +1,5 @@
-const { Schema, model, Types } = require('mongoose');
-
+const { Schema, model } = require('mongoose');
+const Thought = require('./Thought');
 
 const UserSchema = new Schema(
    { 
@@ -7,7 +7,7 @@ const UserSchema = new Schema(
         type: String,
         unique: true,
         required: true,
-        trimmed: true
+        trim: true
     },
     email: {
         type: String,
@@ -15,8 +15,8 @@ const UserSchema = new Schema(
         unique: true,
         match: [
             //needs match of valid email address property:done
-            /^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/,
-            "Please fill a valid email address",
+            /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+            "Please fill a valid email address"
         ],
         
     },
