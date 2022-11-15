@@ -4,10 +4,6 @@ const userController = {
     //Get all users
     getAllUsers(req, res) {
         User.find({})
-            .populate({
-                path: 'comments',
-                select: '__v'
-            })
             .select('-__v')
             .sort({ _id: -1 })
             .then(dbUserData => res.json(dbUserData))
@@ -19,22 +15,24 @@ const userController = {
     //Get user by id
     getUserById({ params }, res) {
         User.findOne({ _id: params.userId})
-            .populate({
-                path: 'comments',
-                select: '__v'
-            })
-            .select('__v')
-            .then(dbUserData => res.json(dbUserData))
-            .catch(err => {
-                console.log(err);
-                res.sendStatus(400);
-            });
+        .select('__v')
+        .then(dbUserData => res.json(dbUserData))
+        .catch(err => {
+            console.log(err);
+            res.sendStatus(400);
+        });
     },
     //Adds a new user
     createUser({ body }, res) {
+        console.log(body);
         User.create(body)
-            .then(dbUserData => res.json(dbUserData))
-            .catch(err => res.json(err));
+            .then(dbUserData => {
+                console.log(dbUserData);
+                res.json(dbUserData)})
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err)});
+
     },
     // Update user by id
     updateUser ({ params, body }, res) {

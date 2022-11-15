@@ -14,7 +14,6 @@ const UserSchema = new Schema(
         required: true,
         unique: true,
         match: [
-            //needs match of valid email address property:done
             /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
             "Please fill a valid email address"
         ],
@@ -22,16 +21,14 @@ const UserSchema = new Schema(
     },
     thoughts: [
         {
-            //Array of _id values referencing the Thought model:done
             type: Schema.Types.ObjectId,
             ref: 'Thought'
         },
     ],
-    freinds: [
+    friends: [
         {
-            //Array of _id values referencing the User model:done?
             type: Schema.Types.ObjectId,
-            reg: 'User'
+            ref: 'User'
         },
     ],
    },
@@ -44,9 +41,13 @@ const UserSchema = new Schema(
    }
 );
 
-//Create a virtual called friendCount that retrieves the length of the user's friends array field on query.
+//Virtual called friendCount that retrieves the length of the user's friends array field on query.
 UserSchema.virtual('friendCount').get(function() {
-    return this.friends.length;
+    if (this.friends.length) {
+        return this.friends.length
+    } else {return '0'
+    }
+    
 });
 
 const User = model('User', UserSchema);

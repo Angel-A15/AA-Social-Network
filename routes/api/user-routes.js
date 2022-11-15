@@ -16,10 +16,6 @@ router.route('/')
     .get(getAllUsers)
     .post(createUser);
 
-// POST a new user
-router.route('/:userId')
-    .post(createUser);
-
 //Set up Get, PUT, and DELETE by id User
 router.route('/:userId')
     .get(getUserById)

@@ -11,22 +11,17 @@ const ThoughtSchema = new Schema(
             maxLength: 280
         },
         createdAt: {
-            //Use a getter method to format the timestamp on query:done
+            //Getter method to format the timestamp on query
             type: Date,
             default: Date.now,
             get: createdAtVal => dateFormat(createdAtVal)
         },
-        // (The user that created this thought)
         username: {
             type: String,
             required: true
         },
-        // (These are like replies)
         reactions: 
             [Reaction]
-            
-
-        
     },
     {
         toJSON: {
@@ -37,8 +32,7 @@ const ThoughtSchema = new Schema(
     }
 );
 
-// Create a virtual called reactionCount that retrieves 
-// the length of the thought's reactions array field on query.:done
+// Virtual retrieves the length of the thought's reactions array field on query
 ThoughtSchema.virtual('reactionCount').get(function() {
     return this.reactions.length;  
 });
