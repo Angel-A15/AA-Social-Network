@@ -16,6 +16,12 @@ const userController = {
     getUserById({ params }, res) {
         User.findOne({ _id: params.userId})
         .select('__v')
+        .populate({
+          path: "friends",
+        })
+        .populate({
+            path: "thoughts",
+        })
         .then(dbUserData => res.json(dbUserData))
         .catch(err => {
             console.log(err);
