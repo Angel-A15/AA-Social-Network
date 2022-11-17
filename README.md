@@ -28,3 +28,4 @@ The user can start the application by writing "npm start" on their terminal.
 
 ## Walkthrough Test Video
 
+https://watch.screencastify.com/v/ctohY4SYiTfnihg80vB2
